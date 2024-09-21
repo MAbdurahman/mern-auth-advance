@@ -2,7 +2,7 @@
 
 `this repository can be a starting point for mern projects`
 
-<h3>Create config.env file in config directory</h3>
+#### Create config.env file in config directory
 ```bash
 PORT=
 NODE_ENV=
