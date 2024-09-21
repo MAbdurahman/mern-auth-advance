@@ -8,9 +8,9 @@ const router = express.Router();
 
 /*************************** routes ***************************/
 
-router.get('/sign-up', signUp);
-router.get('/sign-in', signIn);
-router.get('/sign-out', signOut);
+router.post('/sign-up', signUp);
+router.post('/sign-in', signIn);
+router.post('/sign-out', signOut);
 
 
 

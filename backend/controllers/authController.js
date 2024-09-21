@@ -1,4 +1,5 @@
 /************************* imports *************************/
+import User from '../models/userModel.js';
 import {errorMessageHandler} from '../utils/errorMessageHandlerUtils.js';
 
 
