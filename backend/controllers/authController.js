@@ -4,10 +4,16 @@ import User from '../models/userModel.js';
 import {errorMessageHandler} from '../utils/errorMessageHandlerUtils.js';
 import ErrorHandler from '../utils/errorHandlerUtils.js';
 import {generateTokenAndSetCookie} from '../utils/generateTokenAndSetCookieUtils.js';
+import {
+   sendVerificationEmail,
+   sendWelcomeEmail,
+   sendPasswordResetEmail,
+   sendResetSuccessEmail
+} from '../email/sendEmails.js';
 
 
 export const signUp = async (req, res, next) => {
-   const { email, password, name } = req.body;
+   const {email, password, name} = req.body;
 
    try {
       if (!email) {
@@ -16,11 +22,11 @@ export const signUp = async (req, res, next) => {
       if (!name) {
          return errorMessageHandler(res, 'Name is required', 400);
       }
-      if (!password ) {
+      if (!password) {
          return errorMessageHandler(res, 'Password is required', 400);
       }
 
-      const userAlreadyExists = await User.findOne({ email });
+      const userAlreadyExists = await User.findOne({email});
       if (userAlreadyExists) {
          return errorMessageHandler(res, 'User already exists', 401);
       }
@@ -38,14 +44,12 @@ export const signUp = async (req, res, next) => {
       await user.save();
 
       generateTokenAndSetCookie(res, user._id);
+      await sendVerificationEmail(user, verificationToken);
 
 
       res.status(201).json({
-         success: true,
-         message: "User created successfully",
-         user: {
-            ...user._doc,
-            password: undefined,
+         success: true, message: 'User created successfully', user: {
+            ...user._doc, password: undefined,
          },
       });
 
