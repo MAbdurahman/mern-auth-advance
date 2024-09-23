@@ -1,5 +1,5 @@
 
-export const VERIFICATION_EMAIL_TEMPLATE = `
+export const verificationEmailTemplate = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +29,7 @@ export const VERIFICATION_EMAIL_TEMPLATE = `
 </html>
 `;
 
-export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
+export const passwordResetSuccessTemplate = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +66,7 @@ export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
 </html>
 `;
 
-export const PASSWORD_RESET_REQUEST_TEMPLATE = `
+export const passwordResetRequestTemplate = `
 <!DOCTYPE html>
 <html lang="en">
 <head>

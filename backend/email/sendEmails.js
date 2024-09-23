@@ -1,26 +1,44 @@
 import {mailtrapClient, sender} from '../config/mailtrapConfig.js';
+import {
+   passwordResetRequestTemplate,
+   passwordResetSuccessTemplate,
+   verificationEmailTemplate
+} from './emailTemplates.js';
 
+export async function sendVerificationEmail(email, verificationToken, next) {
+   const recipient = [{email}];
+   try {
+      const response = await mailtrapClient.send({
+         from: sender,
+         to: recipient,
+         subject: "Verify your email",
+         html: verificationEmailTemplate.replace("{verificationCode}", verificationToken),
+         category: "Email Verification",
+      });
 
-export async function sendVerificationEmail(email, verificationToken) {
-   console.log(`${email}, ${verificationToken}`);
-   console.log('sendVerificationEmail...');
-}
+   }
+   catch (err) {
+      next(err);
+
+   }
+}//end of sendVerificationEmail Function
 
 export async function sendWelcomeEmail() {
    console.log('sendWelcomeEmail...');
-}
+}//end of sendWelcomeEmail Function
 
 export async function sendPasswordResetEmail() {
    console.log('sendPasswordResetEmail...');
-}
+}//end of sendPasswordResetEmail Function
 
 export async function sendResendEmail() {
    console.log('sendResendEmail...');
-}
+}//end of sendResendEmail Function
+
 export async function sendResendEmailVerificationEmail() {
    console.log('sendResendEmailVerificationEmail...');
-}
+}//end sendResendEmailVerificationEmail Function
 
 export async function sendResetSuccessEmail() {
    console.log('sendResetSuccessEmail...');
-}
+}//end sendResetSuccessEmail Function

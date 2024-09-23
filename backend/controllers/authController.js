@@ -2,6 +2,7 @@
 import bcryptjs from 'bcryptjs';
 import User from '../models/userModel.js';
 import {errorMessageHandler} from '../utils/errorMessageHandlerUtils.js';
+import {messageHandler} from '../utils/messageHandler.js';
 import ErrorHandler from '../utils/errorHandlerUtils.js';
 import {generateTokenAndSetCookie} from '../utils/generateTokenAndSetCookieUtils.js';
 import {
@@ -44,7 +45,7 @@ export const signUp = async (req, res, next) => {
       await user.save();
 
       generateTokenAndSetCookie(res, user._id);
-      await sendVerificationEmail(user, verificationToken);
+      await sendVerificationEmail(user.email, verificationToken, next);
 
 
       res.status(201).json({
@@ -55,7 +56,6 @@ export const signUp = async (req, res, next) => {
 
    }
    catch (err) {
-
       next(err);
    }
 }//end of signUp Function

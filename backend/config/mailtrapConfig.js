@@ -16,6 +16,7 @@ export const sender = {
    name: "MERN Auth Advance",
 };
 
+/*
 const recipients = [
    {
       email: process.env.MAILTRAP_RECIPIENT,
@@ -30,4 +31,4 @@ mailtrapClient.testing
       text: "Congrats for sending test email with Mailtrap!",
       category: "Integration Test",
    })
-   .then(console.log, console.error);
+   .then(console.log, console.error);*/
