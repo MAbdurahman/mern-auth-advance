@@ -1,9 +1,11 @@
 import {mailtrapClient, sender} from '../config/mailtrapConfig.js';
+import {errorMessageHandler} from '../utils/errorMessageHandlerUtils.js';
 import {
    passwordResetRequestTemplate,
    passwordResetSuccessTemplate,
    verificationEmailTemplate
 } from './emailTemplates.js';
+import {response} from 'express';
 
 export async function sendVerificationEmail(email, verificationToken, next) {
    const recipient = [{email}];
@@ -11,13 +13,14 @@ export async function sendVerificationEmail(email, verificationToken, next) {
       const response = await mailtrapClient.send({
          from: sender,
          to: recipient,
-         subject: "Verify your email",
+         subject: "Verify Your Email",
          html: verificationEmailTemplate.replace("{verificationCode}", verificationToken),
          category: "Email Verification",
       });
 
    }
    catch (err) {
+      errorMessageHandler(response, 'Error sending verification email', 400);
       next(err);
 
    }
