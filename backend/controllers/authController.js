@@ -45,7 +45,7 @@ export const signUp = async (req, res, next) => {
       await user.save();
 
       generateTokenAndSetCookie(res, user._id);
-      await sendVerificationEmail(user.email, verificationToken, next);
+      await sendVerificationEmail(user.email, user.name, verificationToken, next);
 
 
       res.status(201).json({
@@ -85,3 +85,36 @@ export const signOut = async (req, res, next) => {
       next(err);
    }
 }//end of signOut Function
+
+export const verifyEmail = async (req, res, next) => {
+   const {code} = req.body;
+
+   try {
+      const user = await User.findOne({
+         verificationToken: code,
+         verificationTokenExpiresAt: { $gt: Date.now() },
+      });
+
+      if (!user) {
+         return messageHandler(res, 'Invalid or expired Verification Code!', false, 401);
+      }
+      user.isVerified = true;
+      user.verificationToken = undefined;
+      user.verificationTokenExpiresAt = undefined;
+      await user.save();
+
+      await sendWelcomeEmail(user.email, user.name);
+
+      res.status(200).json({
+         success: true,
+         message: "Email verified successfully",
+         user: {
+            ...user._doc,
+            password: undefined,
+         },
+      });
+   }
+   catch (err) {
+      next(err);
+   }
+}//end of verifyEmail Function
