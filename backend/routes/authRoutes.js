@@ -9,13 +9,14 @@ import {
    forgotPassword,
    resetPassword
 } from '../controllers/authController.js';
+import {verifyToken} from '../utils/verifyTokenUtils.js';
 
 
 /************************* variables *************************/
 const router = express.Router();
 
 /*************************** routes ***************************/
-router.get('/check-authorization', checkAuthorization);
+router.get('/check-authorization', verifyToken, checkAuthorization);
 router.post('/sign-up', signUp);
 router.post('/sign-in', signIn);
 router.post('/sign-out', signOut);

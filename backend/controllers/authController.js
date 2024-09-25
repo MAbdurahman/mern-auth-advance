@@ -67,12 +67,12 @@ export const signIn = async (req, res, next) => {
    try {
       const user = await User.findOne({email});
       if (!user) {
-         return errorMessageHandler(res, 'Invalid credentials!', 400);
+         return errorMessageHandler(res, 'Invalid credentials!', 403);
       }
 
       const isPassword = await bcryptjs.compare(password, user.password);
       if (!isPassword) {
-         return errorMessageHandler(res, 'Invalid credentials!', 400);
+         return errorMessageHandler(res, 'Invalid credentials!', 401);
       }
 
       generateTokenAndSetCookie(res, user._id);
@@ -80,7 +80,7 @@ export const signIn = async (req, res, next) => {
       user.lastLogin = new Date();
       await user.save();
 
-      res.status(200).json({
+      res.status(202).json({
          success: true,
          message: "Signed in successfully!",
          user: {
@@ -196,7 +196,7 @@ export const resetPassword = async (req, res, next) => {
 
       await sendResetSuccessEmail(user.email, user.name, next);
 
-      res.status(200).json({ success: true, message: "Password reset successful!" });
+      res.status(202).json({ success: true, message: "Password reset successful!" });
 
    }
    catch (err) {
@@ -212,7 +212,7 @@ export const checkAuthorization = async (req, res, next) => {
          return errorMessageHandler(res, 'User not found!', 404);
       }
 
-      res.status(200).json({ success: true, user });
+      res.status(202).json({ success: true, user });
    }
    catch (err) {
       next(err);

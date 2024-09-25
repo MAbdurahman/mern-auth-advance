@@ -15,7 +15,7 @@ export async function sendVerificationEmail(email, name, verificationToken, next
          to: recipient,
          subject: "Verify Your Email",
          html: verificationEmailTemplate.replace("{verificationCode}", verificationToken).replace('{name}', name),
-         category: "Email Verification",
+         category: "Verification Email",
       });
    }
    catch (err) {
@@ -45,40 +45,30 @@ export async function sendWelcomeEmail(email, name, next) {
 export async function sendPasswordResetEmail(email, name, resetURL, next ) {
    const recipient = [{ email }];
    try {
-      const response = await mailtrapClient.send({
+      await mailtrapClient.send({
          from: sender,
          to: recipient,
          subject: "Password Reset",
          html: passwordResetRequestTemplate.replace('{name}', name).replace('{resetURL}', resetURL),
          category: "Password Reset Request",
       });
-
    }
    catch (err) {
       next(err);
    }
 }//end of sendPasswordResetEmail Function
 
-export async function sendResendEmail() {
-   console.log('sendResendEmail...');
-}//end of sendResendEmail Function
-
-export async function sendResendEmailVerificationEmail() {
-   console.log('sendResendEmailVerificationEmail...');
-}//end sendResendEmailVerificationEmail Function
-
 export async function sendResetSuccessEmail(email, name, next) {
    const recipient = [{ email }];
 
    try {
-      const response = await mailtrapClient.send({
+      await mailtrapClient.send({
          from: sender,
          to: recipient,
          subject: "Password Reset Success",
          html:passwordResetSuccessTemplate.replace('{name}', name),
          category: "Password Reset Success",
       });
-
    }
    catch (err) {
       next(err);

@@ -25,7 +25,6 @@ app.use(cookieParser());
 app.use(helmet());
 app.use(authenticateMiddleware);
 app.use(loggerMiddleware);
-app.use(express.static('public'));
 
 /************************* import all routes *************************/
 import homeRoute from '../routes/homeRoute.js';

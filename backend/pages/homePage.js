@@ -1,4 +1,3 @@
-
 export default function HomePage() {
 
    //HTML
@@ -16,9 +15,12 @@ export default function HomePage() {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
               integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
               crossorigin="anonymous" referrerpolicy="no-referrer"/>
+          <!-- google fonts-->   
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Mono:wght@100..900&display=swap" rel="stylesheet"> 
         <title>Backend Server</title>
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
             
             *,
             *::after,
@@ -72,7 +74,10 @@ export default function HomePage() {
             body {
                 margin: 0;
                 min-height: 100vh;
-                font-family: 'PT Sans', sans-serif;
+                font-family: 'Montserrat', sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 400;
+                font-style: normal;
                 overflow: hidden;
             }
             
@@ -121,13 +126,19 @@ export default function HomePage() {
             
             .page-title h1 {
                 color: rgb(255, 255, 255);
+                font-family: 'Lora', serif;
+                font-optical-sizing: auto;
+                font-style: normal;
                 font-size: 5rem;
-                font-weight: 700;
+                font-weight: 500;
                 margin: 0;
             }
             
             .page-title h2 {
                 color: rgb(255, 255, 255);
+                font-family: 'Montserrat', sans-serif;
+                font-optical-sizing: auto;
+                font-style: normal;
                 font-size: 2rem;
                 font-weight: 400;
                 margin: 0;
