@@ -44,7 +44,7 @@ export const passwordResetSuccessTemplate = `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Reset</title>
+    <title>Password Reset Success</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Mono:wght@100..900&display=swap"
@@ -52,7 +52,7 @@ export const passwordResetSuccessTemplate = `
 </head>
 <body style="font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
 <div style="background: linear-gradient(to right, #1f628e, #1a5175); padding: 20px; text-align: center;">
-    <h1 style="font-family: 'Lora', serif; color: white; margin: 0;">Password Reset</h1>
+    <h1 style="font-family: 'Lora', serif; color: white; margin: 0;">Password Reset Success</h1>
 </div>
 <div style="background-color: #f9f9f9; padding: 20px; border-radius: 0 0 5px 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
     <p>Hello&nbsp;{name},</p>

@@ -42,8 +42,21 @@ export async function sendWelcomeEmail(email, name, next) {
    }
 }//end of sendWelcomeEmail Function
 
-export async function sendPasswordResetEmail() {
-   console.log('sendPasswordResetEmail...');
+export async function sendPasswordResetEmail(email, name, resetURL, next ) {
+   const recipient = [{ email }];
+   try {
+      const response = await mailtrapClient.send({
+         from: sender,
+         to: recipient,
+         subject: "Password Reset",
+         html: passwordResetRequestTemplate.replace('{name}', name).replace('{resetURL}', resetURL),
+         category: "Password Reset Request",
+      });
+
+   }
+   catch (err) {
+      next(err);
+   }
 }//end of sendPasswordResetEmail Function
 
 export async function sendResendEmail() {
@@ -54,6 +67,20 @@ export async function sendResendEmailVerificationEmail() {
    console.log('sendResendEmailVerificationEmail...');
 }//end sendResendEmailVerificationEmail Function
 
-export async function sendResetSuccessEmail() {
-   console.log('sendResetSuccessEmail...');
+export async function sendResetSuccessEmail(email, name, next) {
+   const recipient = [{ email }];
+
+   try {
+      const response = await mailtrapClient.send({
+         from: sender,
+         to: recipient,
+         subject: "Password Reset Success",
+         html:passwordResetSuccessTemplate.replace('{name}', name),
+         category: "Password Reset Success",
+      });
+
+   }
+   catch (err) {
+      next(err);
+   }
 }//end sendResetSuccessEmail Function
