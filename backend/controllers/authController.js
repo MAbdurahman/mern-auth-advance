@@ -19,18 +19,18 @@ export const signUp = async (req, res, next) => {
 
    try {
       if (!email) {
-         return errorMessageHandler(res, 'Email is required', 400);
+         return errorMessageHandler(res, 'Please enter email!', 400);
       }
       if (!name) {
-         return errorMessageHandler(res, 'Name is required', 400);
+         return errorMessageHandler(res, 'Please enter name!', 400);
       }
       if (!password) {
-         return errorMessageHandler(res, 'Password is required', 400);
+         return errorMessageHandler(res, 'Please enter password!', 400);
       }
 
       const userAlreadyExists = await User.findOne({email});
       if (userAlreadyExists) {
-         return errorMessageHandler(res, 'User already exists', 401);
+         return errorMessageHandler(res, 'Email already exists!', 401);
       }
       const hashedPassword = await bcryptjs.hash(password, 10);
       const verificationToken = Math.floor(100000 + Math.random() * 900000).toString();
@@ -63,6 +63,12 @@ export const signUp = async (req, res, next) => {
 
 export const signIn = async (req, res, next) => {
    const {email, password} = req.body;
+   if (!email) {
+      return errorMessageHandler(res, 'Please enter email!', 400);
+   }
+   if (!password) {
+      return errorMessageHandler(res, 'Please enter password!', 400);
+   }
 
    try {
       const user = await User.findOne({email});

@@ -7,6 +7,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import {authenticateMiddleware} from '../middlewares/authenticateMiddleware.js';
 import {loggerMiddleware} from '../middlewares/loggerMiddleware.js';
+import {errorMiddlewareHandler} from '../middlewares/errorMiddleware.js';
 
 /************************* setup config file *************************/
 if (process.env.NODE_ENV !== 'production') {
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use(helmet());
 app.use(authenticateMiddleware);
 app.use(loggerMiddleware);
+app.use(errorMiddlewareHandler);
 
 /************************* import all routes *************************/
 import homeRoute from '../routes/homeRoute.js';
