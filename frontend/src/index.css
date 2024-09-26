@@ -1,3 +1,280 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+   body {
+      @apply font-body;
+   }
+
+   h1,
+   h2,
+   h3,
+   h4,
+   h5 {
+
+      @apply font-heading;
+      font-weight: 600;
+      line-height: 1.3;
+   }
+
+   h1 {
+      font-size: 3.052rem;
+   }
+
+   h2 {
+      font-size: 2.441rem;
+   }
+
+   h3 {
+      font-size: 1.953rem;
+   }
+
+   h4 {
+      font-size: 1.563rem;
+   }
+
+   h5 {
+      font-size: 1.25rem;
+   }
+
+
+   /* Chrome, Safari, Edge, Opera */
+   input::-webkit-outer-spin-button,
+   input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+      @apply font-monospace;
+   }
+
+   /* Firefox */
+   input[type=number] {
+      -moz-appearance: textfield;
+      @apply font-monospace;
+   }
+   /*=============================================
+      scrollbar styles
+================================================*/
+   /* width */
+   ::-webkit-scrollbar {
+      width: 3px;
+
+   }
+   /* track */
+   ::-webkit-scrollbar-track {
+      margin-left: 4px;
+      box-shadow: inset 0 0 5px #bfbfbf;
+      border-radius: 3px;
+
+   }
+
+   /* handle */
+   ::-webkit-scrollbar-thumb {
+      background: #d9d9d9;
+      border-radius: 3px;
+   }
+
+   /* handle on hover */
+   ::-webkit-scrollbar-thumb:hover {
+      background: #616161;
+   }
+}
+
+@layer utilities {
+   .h1,
+   .h2,
+   .h3,
+   .h4,
+   .h5 {
+      margin: 3rem 0 1.38rem;
+      @apply font-heading;
+      font-weight: 600;
+      line-height: 1.3;
+   }
+
+   .h1 {
+      font-size: 3.052rem;
+   }
+
+   .h2 {
+      font-size: 2.441rem;
+   }
+
+   .h3 {
+      font-size: 1.953rem;
+   }
+
+   .h4 {
+      font-size: 1.563rem;
+   }
+
+   .h5 {
+      font-size: 1.25rem;
+   }
+
+   .flex-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .grid-center {
+      display: grid;
+      place-items: center;
+   }
+
+   .grid-container {
+      margin: 3em auto;
+      width: 90%;
+      display: grid;
+      row-gap: 3rem;
+      column-gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   }
+
+   .grid-container-12 {
+      /*margin: 3em auto 1em;*/
+      margin: 0 auto;
+      width: 90%;
+      display: grid;
+      row-gap: 3rem;
+      column-gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   }
+
+   .grid-column-1 {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      column-gap: 2rem;
+   }
+
+   .grid-column-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 2rem;
+   }
+
+   .grid-column-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 2rem;
+   }
+
+   .grid-column-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      column-gap: 2rem;
+   }
+
+   .min-w-30 {
+      min-width: 30rem;
+   }
+
+   .sub-heading-container {
+      width: 80%;
+      margin: 0 auto;
+   }
+
+   .sub-heading {
+      margin-bottom: 1em;
+      margin-left: 1em;
+   }
+
+   .row {
+      float: left;
+      width: 100%;
+      padding: 20px 0 50px;
+   }
+
+   .form-input {
+      position: relative;
+   }
+
+   .outer-container {
+      margin: 0 auto;
+      max-width: 1200px;
+   }
+
+   .extra-margin-bottom {
+      margin-bottom: 34rem;
+      padding-bottom: 34rem;
+   }
+
+   /*Extra small devices (portrait phones, less than 576px)*/
+   .wrapper {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 16px;
+      padding-right: 16px;
+   }
+   /*Small devices (landscape phones, 576px and up)*/
+   @media (min-width: 576px) {
+      .wrapper {
+         max-width: 544px;
+      }
+   }
+   /*Medium devices (tablets, 768px and up)*/
+   @media (min-width: 768px) {
+      .wrapper {
+         max-width: 720px;
+      }
+   }
+   /*Large devices (desktops, 992px and up)*/
+   @media (min-width: 992px) {
+      .wrapper {
+         max-width: 960px;
+      }
+   }
+   /*Extra large devices (large desktops, 1200px and up)*/
+   @media (min-width: 1200px) {
+      .wrapper {
+         max-width: 1144px;
+      }
+   }
+
+   .move-in-from-right {
+      animation-name: move-in-from-right;
+      animation-duration: 1s;
+      animation-iteration-count: 1;
+      animation-timing-function: ease;
+   }
+
+   .exit-to-left {
+      animation-name: exit-to-left;
+      animation-duration: 1s;
+      animation-iteration-count: 1;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+   }
+
+   @keyframes move-in-from-right {
+      0% {
+         opacity: 0;
+         transform: translateX(2000px);
+      }
+      60% {
+         opacity: 1;
+         transform: translateX(-50px);
+      }
+      80% {
+         transform: translateX(10px);
+      }
+      100% {
+         transform: translateX(0);
+      }
+   }
+
+   @keyframes exit-to-left {
+      0% {
+         opacity: 1;
+         transform: translateX(0);
+      }
+      50% {
+         transform: translateX(50px);
+      }
+      100% {
+         transform: translateX(-2000px);
+      }
+   }
+}
