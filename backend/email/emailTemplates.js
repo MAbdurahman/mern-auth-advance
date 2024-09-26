@@ -32,7 +32,7 @@ export const verificationEmailTemplate = `
          <p>Best regards,<br>MERN Auth Advance Team</p>
       </div>
       <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;">
-         <p>This is an automated message, please do not reply to this email.</p>
+         <p>This is an automated email, please do not reply.</p>
       </div>
    </body>
 </html>
@@ -73,7 +73,7 @@ export const passwordResetSuccessTemplate = `
     <p>Best regards,<br>MERN Auth Advance Team</p>
 </div>
 <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;">
-    <p>This is an automated message, please do not reply to this email.</p>
+    <p>This is an automated email, please do not reply.</p>
 </div>
 </body>
 </html>
@@ -102,7 +102,7 @@ export const passwordResetRequestTemplate = `
     <p>Best regards,<br>MERN Auth Advance Team</p>
 </div>
 <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;">
-    <p>This is an automated message, please do not reply to this email.</p>
+    <p>This is an automated email, please do not reply.</p>
 </div>
 </body>
 </html>
@@ -140,7 +140,7 @@ export const welcomeEmailTemplate = `
          <p>Best regards,<br>MERN Auth Advance Team</p>
       </div>
       <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;">
-         <p>This is an automated message, please do not reply to this email.</p>
+         <p>This is an automated email, please do not reply.</p>
       </div>
    </body>
 

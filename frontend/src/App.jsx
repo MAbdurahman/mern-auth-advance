@@ -7,7 +7,7 @@ import Home from './pages/Home.jsx';
 export default function App() {
 
    return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-01-100 via-blue-01-000 to-blue-01-100
+      <div className="min-h-screen bg-gradient-to-br from-neutral-100 via-neutral-000 to-neutral-100
       flex items-center justify-center relative overflow-hidden">
          <Routes>
             <Route path="/" element={<Home/>} />

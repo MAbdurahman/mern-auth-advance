@@ -15,7 +15,7 @@ export async function sendVerificationEmail(email, name, verificationToken, next
       await mailtrapClient.send({
          from: sender,
          to: recipient,
-         subject: "Verify Your Email",
+         subject: "Verify Email",
          html: verificationEmailTemplate.replace("{verificationCode}", verificationToken).replace('{name}', firstName),
          category: "Verification Email",
       });
@@ -52,7 +52,7 @@ export async function sendPasswordResetEmail(email, name, resetURL, next ) {
       await mailtrapClient.send({
          from: sender,
          to: recipient,
-         subject: "Password Reset",
+         subject: "Password Reset Request",
          html: passwordResetRequestTemplate.replace('{name}', firstName).replace('{resetURL}', resetURL),
          category: "Password Reset Request",
       });
