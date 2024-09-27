@@ -1,8 +1,8 @@
 
 import {Route, Routes} from 'react-router-dom';
-import SignUp from './pages/SignUp.jsx';
-import SignIn from './pages/SignIn.jsx';
-import Home from './pages/Home.jsx';
+import SignUpPage from './pages/SignUpPage.jsx';
+import SignInPage from './pages/SignInPage.jsx';
+import HomePage from './pages/HomePage.jsx';
 
 export default function App() {
 
@@ -10,9 +10,9 @@ export default function App() {
       <div className="min-h-screen bg-gradient-to-br from-neutral-100 via-neutral-000 to-neutral-100
       flex items-center justify-center relative overflow-hidden">
          <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/sign-up" element={<SignUp/>} />
-            <Route path="/sign-in" element={<SignIn/>} />
+            <Route path="/" element={<HomePage/>} />
+            <Route path="/sign-up" element={<SignUpPage/>} />
+            <Route path="/sign-in" element={<SignInPage/>} />
 
          </Routes>
       </div>);

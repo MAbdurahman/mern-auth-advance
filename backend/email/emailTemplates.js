@@ -28,7 +28,7 @@ export const verificationEmailTemplate = `
          </div>
          <p>Enter this code on the verification page to complete your registration.</p>
          <p>This code will expire in 15 minutes for security considerations.</p>
-         <p>If you didn't create an account with us, please ignore this email.</p>
+         <p>If you did not create an account with us, please ignore this email.</p>
          <p>Best regards,<br>MERN Auth Advance Team</p>
       </div>
       <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;">
@@ -56,7 +56,7 @@ export const passwordResetSuccessTemplate = `
 </div>
 <div style="background-color: #f9f9f9; padding: 20px; border-radius: 0 0 5px 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
     <p>Hello&nbsp;{name},</p>
-    <p>We are writing to confirm that your password has been reset successfully.</p>
+    <p>This correspondence is to confirm that your password has been reset successfully.</p>
     <div style="text-align: center; margin: 30px 0;">
         <div style="background-color: #39a503; color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; display: inline-block; font-size: 32px;">
             ✓
