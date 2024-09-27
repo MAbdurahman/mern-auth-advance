@@ -37,11 +37,11 @@ export default function PasswordStrengthMeter({password}) {
    const strength = getStrength(password);
 
    const getColor = (strength) => {
-      if (strength === 0) return "bg-red-500";
-      if (strength === 1) return "bg-red-400";
-      if (strength === 2) return "bg-yellow-500";
-      if (strength === 3) return "bg-yellow-400";
-      return "bg-green-500";
+      if (strength === 0) return "bg-semantic-a-200";
+      if (strength === 1) return "bg-semantic-a-400";
+      if (strength === 2) return "bg-semantic-w-400";
+      if (strength === 3) return "bg-semantic-s-100";
+      return "bg-semantic-s-400";
    };
 
    const getStrengthText = (strength) => {
