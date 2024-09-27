@@ -10,7 +10,7 @@ const PasswordCriteria = ({ password }) => {
    ];
 
    return (
-      <div className='mt-2 space-y-1'>
+      <div className='mt-2 space-y-1 tracking-wider'>
          {criteria.map((item) => (
             <div key={item.label} className='flex items-center text-xs'>
                {item.met ? (
@@ -55,8 +55,8 @@ export default function PasswordStrengthMeter({password}) {
    return (
       <div className='mt-2'>
          <div className='flex justify-between items-center mb-1'>
-            <span className='text-xs text-gray-400'>Password strength</span>
-            <span className='text-xs text-gray-400'>{getStrengthText(strength)}</span>
+            <span className='text-xs text-augmented-700 font-semibold tracking-wider'>Password strength</span>
+            <span className='text-xs text-augmented-700 font-semibold tracking-wider'>{getStrengthText(strength)}</span>
          </div>
 
          <div className='flex space-x-1'>
