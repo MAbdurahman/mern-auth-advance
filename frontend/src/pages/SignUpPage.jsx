@@ -26,11 +26,11 @@ export default function SignUpPage() {
          initial={{opacity: 0, y: 20}}
          animate={{opacity: 1, y: 0}}
          transition={{duration: 0.5}}
-         className='max-w-md w-full bg-neutral-200 bg-opacity-50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl
+         className='max-w-md w-full bg-neutral-200 bg-opacity-50 backdrop-filter backdrop-blur-xl rounded-md shadow-xl
 			overflow-hidden'
       >
          <div className='p-8'>
-            <h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-neutral-400 to-neutral-500 text-transparent bg-clip-text'>
+            <h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-augmented-600 to-augmented-700 text-transparent bg-clip-text'>
                Create Account
             </h2>
             <form onSubmit={handleSubmit}>
@@ -44,7 +44,7 @@ export default function SignUpPage() {
                <Input
                   icon={Mail}
                   type='email'
-                  placeholder='Email Address'
+                  placeholder='Email'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                />
@@ -55,7 +55,28 @@ export default function SignUpPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                />
+
+
+               <motion.button
+                  className='mt-5 w-full py-3 px-4 bg-gradient-to-r from-blue-01-700 to-blue-01-800 text-white
+						font-semibold rounded-md shadow-lg hover:from-blue-01-800
+						hover:to-blue-01-700 focus:outline-none focus:ring-2 focus:ring-blue-01-700 focus:ring-offset-2
+						 focus:ring-offset-blue-01-900 transition duration-200 uppercase tracking-wider'
+                  whileHover={{scale: 1.02}}
+                  whileTap={{scale: 0.98}}
+                  type='submit'
+               >
+                  Sign Up
+               </motion.button>
             </form>
+         </div>
+         <div className='px-8 py-4 bg-neutral-200 bg-opacity-50 flex justify-center'>
+            <p className='text-sm text-augmented-800 tracking-wide'>
+               Already have an account?{" "}
+               <Link to={"/sign-in"} className='text-blue-01-800 font-semibold tracking-wider hover:underline'>
+                  Sign In
+               </Link>
+            </p>
          </div>
       </motion.div>
 
