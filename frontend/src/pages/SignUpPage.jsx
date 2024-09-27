@@ -28,9 +28,9 @@ export default function SignUpPage() {
          animate={{opacity: 1, y: 0}}
          transition={{duration: 0.5}}
          className='max-w-md w-full bg-neutral-200 bg-opacity-50 backdrop-filter backdrop-blur-xl rounded-md shadow-xl
-			overflow-hidden'
+			overflow-hidden mx-3'
       >
-         <div className='p-8'>
+         <div className='p-8 '>
             <h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-augmented-600 to-augmented-700 text-transparent bg-clip-text'>
                Create Account
             </h2>
