@@ -9,8 +9,32 @@ export default function VerifyEmailPage() {
    const inputRefs = useRef([]);
    const navigate = useNavigate();
 
+   const isLoading = false;
+
    const handleChange = (index, value) => {
-      console.log('handleChange', index, value);
+      const newCode = [...code];
+
+      //handle pasted content
+      if (value.length > 1) {
+         const pastedCode = value.slice(0, 6).split("");
+         for (let i = 0; i < 6; i++) {
+            newCode[i] = pastedCode[i] || "";
+         }
+         setCode(newCode);
+
+         //focus on the last non-empty input or the first empty one
+         const lastFilledIndex = newCode.findLastIndex((digit) => digit !== "");
+         const focusIndex = lastFilledIndex < 5 ? lastFilledIndex + 1 : 5;
+         inputRefs.current[focusIndex].focus();
+      } else {
+         newCode[index] = value;
+         setCode(newCode);
+
+         //move focus to the next input field if value is entered
+         if (value && index < 5) {
+            inputRefs.current[index + 1].focus();
+         }
+      }
 
    }//end of handleChange Function
 
@@ -23,9 +47,20 @@ export default function VerifyEmailPage() {
 
 
    const handleSubmit = async (e) => {
-      console.log('handleSubmit');
+      e.preventDefault();
+      const verificationCode = code.join("");
+      console.log(`Verification oode submitted - ${verificationCode}`)
+
+
 
    }//end of handleSubmit Function
+
+   // Auto submit when all fields are filled
+   useEffect(() => {
+      if (code.every((digit) => digit !== "")) {
+         handleSubmit(new Event("submit"));
+      }
+   }, [code]);
 
    return (
       <div
@@ -63,9 +98,9 @@ export default function VerifyEmailPage() {
                   whileTap={{scale: 0.95}}
                   type='submit'
 
-                  className='w-full uppercase tracking-wider font-semibold bg-gradient-to-r from-blue-01-700 to-blue-01-800 text-white py-3 px-4 rounded-md shadow-lg hover:from-blue-01-700 hover:to-blue-01-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50'
+                  className='w-full uppercase tracking-wider font-semibold bg-gradient-to-r from-blue-01-700 to-blue-01-800 text-white py-3 px-4 rounded-md shadow-lg hover:from-blue-01-700 hover:to-blue-01-800 focus:outline-none focus:ring-2 focus:ring-blue-01-600 focus:ring-opacity-50 disabled:opacity-50'
                >
-                  Verify Email
+                  {isLoading ? "Verifying..." : "Verify Email"}
                </motion.button>
             </form>
          </motion.div>
