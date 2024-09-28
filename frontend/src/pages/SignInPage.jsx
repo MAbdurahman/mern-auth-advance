@@ -31,7 +31,7 @@ export default function SignInPage() {
       >
          <div className='p-8 '>
             <h2
-               className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-augmented-600 to-augmented-700 text-transparent bg-clip-text tracking-wider'>
+               className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-01-700 to-blue-01-800 text-transparent bg-clip-text tracking-wider uppercase'>
                Sign In
             </h2>
             <form onSubmit={handleSubmit}>
@@ -63,7 +63,7 @@ export default function SignInPage() {
                </motion.button>
                <div className='flex ml-52 mb-2'>
                   <Link to='/forgot-password'
-                        className="text-blue-01-800 font-semibold tracking-wider hover:underline">
+                        className="text-sm text-blue-01-800 font-semibold tracking-wider hover:underline">
                      Forgot password?
                   </Link>
                </div>

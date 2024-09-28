@@ -31,8 +31,8 @@ export default function SignUpPage() {
 			overflow-hidden mx-3'
       >
          <div className='p-8 '>
-            <h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-augmented-600 to-augmented-700 text-transparent bg-clip-text'>
-               Create Account
+            <h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-01-700 to-blue-01-800 text-transparent bg-clip-text uppercase'>
+               Sign Up
             </h2>
             <form onSubmit={handleSubmit}>
                <Input

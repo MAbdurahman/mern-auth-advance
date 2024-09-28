@@ -55,7 +55,7 @@ export default function PasswordStrengthMeter({password}) {
    return (
       <div className='mt-2'>
          <div className='flex justify-between items-center mb-1'>
-            <span className='text-xs text-augmented-700 font-semibold tracking-wider'>Password strength</span>
+            <span className='text-xs text-blue-01-700 font-semibold tracking-wider'>Password Strength</span>
             <span className='text-xs text-augmented-700 font-semibold tracking-wider'>{getStrengthText(strength)}</span>
          </div>
 
