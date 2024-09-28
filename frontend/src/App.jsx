@@ -3,6 +3,7 @@ import {Route, Routes} from 'react-router-dom';
 import SignUpPage from './pages/SignUpPage.jsx';
 import SignInPage from './pages/SignInPage.jsx';
 import HomePage from './pages/HomePage.jsx';
+import VerifyEmailPage from './pages/VerifyEmailPage.jsx';
 
 export default function App() {
 
@@ -13,6 +14,7 @@ export default function App() {
             <Route path="/" element={<HomePage/>} />
             <Route path="/sign-up" element={<SignUpPage/>} />
             <Route path="/sign-in" element={<SignInPage/>} />
+            <Route path="/verify-email" element={<VerifyEmailPage/>} />
 
          </Routes>
       </div>);
