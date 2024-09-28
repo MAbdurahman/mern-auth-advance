@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useAuthStore } from "../store/authStore";
 
 export default function VerifyEmailPage() {
    /************************* variables *************************/
@@ -9,7 +10,7 @@ export default function VerifyEmailPage() {
    const inputRefs = useRef([]);
    const navigate = useNavigate();
 
-   const isLoading = false;
+   const { error, isLoading, verifyEmail } = useAuthStore();
 
    const handleChange = (index, value) => {
       const newCode = [...code];
@@ -49,10 +50,14 @@ export default function VerifyEmailPage() {
    const handleSubmit = async (e) => {
       e.preventDefault();
       const verificationCode = code.join("");
-      console.log(`Verification oode submitted - ${verificationCode}`)
+      try {
+         await verifyEmail(verificationCode);
+         navigate("/");
 
+      } catch (err) {
+         console.log(err);
 
-
+      }
    }//end of handleSubmit Function
 
    // Auto submit when all fields are filled
@@ -92,7 +97,7 @@ export default function VerifyEmailPage() {
                      />
                   ))}
                </div>
-
+               {error && <p className='text-red-500 font-semibold mt-2'>{error}</p>}
                <motion.button
                   whileHover={{scale: 1.05}}
                   whileTap={{scale: 0.95}}

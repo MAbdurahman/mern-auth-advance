@@ -5,18 +5,27 @@ import { Loader, Lock, Mail, User } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import Input from '../components/Input.jsx';
 import PasswordStrengthMeter from '../components/PasswordStrengthMeter.jsx';
+import { useAuthStore } from '../store/authStore.js';
 
 export default function SignUpPage() {
    const [name, setName] = useState("");
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const navigate = useNavigate();
+   const { signup, error, isLoading } = useAuthStore();
 
 
 
- const handleSubmit = (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('handleSubmit');
+    try {
+       await signup(email, password, name);
+       navigate("/verify-email");
+
+    } catch (err) {
+       console.log(err);
+
+    }
 
  }//end of handleSubmit Function
 
@@ -56,7 +65,7 @@ export default function SignUpPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                />
-
+               {error && <p className='text-red-500 font-semibold mt-2'>{error}</p>}
                <PasswordStrengthMeter password={password} />
 
                <motion.button
@@ -67,8 +76,9 @@ export default function SignUpPage() {
                   whileHover={{scale: 1.02}}
                   whileTap={{scale: 0.98}}
                   type='submit'
+                  disabled={isLoading}
                >
-                  Sign Up
+                  {isLoading ? <Loader className=' animate-spin mx-auto' size={24} /> : "Sign Up"}
                </motion.button>
             </form>
          </div>
