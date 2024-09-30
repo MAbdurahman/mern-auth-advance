@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Mail, Lock, Loader } from "lucide-react";
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
+import { useAuthStore } from "../store/authStore";
 
 
 
@@ -12,12 +13,14 @@ export default function SignInPage() {
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
 
+   const { signin, isLoading, error } = useAuthStore();
 
-   async function handleSubmit() {
+
+   const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log('handleSubmit');
+      await signin(email, password);
 
-   }//end of handleSubmit Function
+   };//end of handleSubmit Function
 
 
 
@@ -50,6 +53,7 @@ export default function SignInPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                />
+
                <motion.button
                   className='mt-1 mb-3 w-full py-3 px-4 bg-gradient-to-r from-blue-01-700 to-blue-01-800 text-white
 						font-semibold rounded-md shadow-lg hover:from-blue-01-800
@@ -61,13 +65,14 @@ export default function SignInPage() {
                >
                   Sign In
                </motion.button>
+
                <div className='flex ml-52 mb-2'>
                   <Link to='/forgot-password'
                         className="text-sm text-blue-01-800 font-semibold tracking-wider hover:underline">
                      Forgot password?
                   </Link>
                </div>
-
+               {error && <p className='text-red-500 font-semibold mb-2'>{error}</p>}
             </form>
 
          </div>

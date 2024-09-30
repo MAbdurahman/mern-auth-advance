@@ -1,13 +1,30 @@
 /************************* imports *************************/
 import { useEffect } from "react";
-import {Route, Routes} from 'react-router-dom';
+import {Navigate, Route, Routes} from 'react-router-dom';
 import { Toaster } from "react-hot-toast";
 import SignUpPage from './pages/SignUpPage.jsx';
 import SignInPage from './pages/SignInPage.jsx';
 import HomePage from './pages/HomePage.jsx';
+import DashboardPage from './pages/DashboardPage.jsx';
 import VerifyEmailPage from './pages/VerifyEmailPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 import { useAuthStore } from "./store/authStore";
+
+
+// protect routes that require authentication
+const ProtectedRoute = ({ children }) => {
+   const { isAuthenticated, user } = useAuthStore();
+
+   if (!isAuthenticated) {
+      return <Navigate to='/sign-in' replace />;
+   }
+
+   if (!user.isVerified) {
+      return <Navigate to='/verify-email' replace />;
+   }
+
+   return children;
+};
 
 
 
@@ -35,7 +52,9 @@ export default function App() {
       <div className="min-h-screen bg-gradient-to-br from-neutral-100 via-neutral-000 to-neutral-100
       flex items-center justify-center relative overflow-hidden">
          <Routes>
-            <Route path="/" element={<HomePage/>} />
+            <Route path="/" element={<ProtectedRoute>
+                                       <DashboardPage />
+                                       </ProtectedRoute>} />
             <Route path="/sign-up"
                    element={<RedirectAuthenticatedUser>
                               <SignUpPage />
