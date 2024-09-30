@@ -72,7 +72,7 @@ export default function SignInPage() {
                      Forgot password?
                   </Link>
                </div>
-               {error && <p className='text-red-500 font-semibold mb-2'>{error}</p>}
+               {error && <p className='text-semantic-a-400 font-semibold tracking-wider mb-2'>{error}</p>}
             </form>
 
          </div>

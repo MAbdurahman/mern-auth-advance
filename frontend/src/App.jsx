@@ -9,6 +9,7 @@ import DashboardPage from './pages/DashboardPage.jsx';
 import VerifyEmailPage from './pages/VerifyEmailPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 import { useAuthStore } from "./store/authStore";
+import LoadingSpinner from './components/LoadingSpinner.jsx';
 
 
 // protect routes that require authentication
@@ -48,6 +49,9 @@ export default function App() {
       checkAuth();
    }, [checkAuth]);
 
+   if (isCheckingAuth) {
+      return <LoadingSpinner/>;
+   }
    return (
       <div className="min-h-screen bg-gradient-to-br from-neutral-100 via-neutral-000 to-neutral-100
       flex items-center justify-center relative overflow-hidden">
