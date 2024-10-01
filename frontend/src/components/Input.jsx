@@ -11,4 +11,4 @@ export default function Input({ icon: Icon, ...props }) {
       </div>
 
    );
-}//end of Input Fucntion
+}//end of Input Function

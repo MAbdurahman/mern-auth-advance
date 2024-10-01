@@ -59,6 +59,7 @@ export default function App() {
             <Route path="/" element={<ProtectedRoute>
                                        <DashboardPage />
                                        </ProtectedRoute>} />
+
             <Route path="/sign-up"
                    element={<RedirectAuthenticatedUser>
                               <SignUpPage />
