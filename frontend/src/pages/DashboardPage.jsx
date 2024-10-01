@@ -5,11 +5,11 @@ import { formatDate} from '../utils/dateUtils.js';
 
 export default function DashboardPage() {
    /************************* variables *************************/
-   const { user } = useAuthStore();
+   const { user, signout } = useAuthStore();
 
 
    const handleSignOut = () => {
-      console.log('handleSignOut');
+      signout();
    }
 
    return (
